@@ -92,17 +92,37 @@
       </div>
     </div>
 
-    <!-- ── BUSQUEDA ── -->
-    <div *ngIf="modoVista === 'busqueda'" class="card p-4 shadow mx-auto" style="max-width: 520px;">
+  <!-- ── BUSQUEDA ── -->
+<div *ngIf="modoVista === 'busqueda'" class="card p-4 shadow mx-auto" style="max-width: 520px;">
 
-      <label class="form-label fw-semibold">Numero de folio</label>
+  <label class="form-label fw-semibold">Numero de folio</label>
 
-      <div class="input-group mb-3">
-        <input class="form-control" [(ngModel)]="folioBusqueda">
-        <button class="btn btn-primary" (click)="buscarFolio()">Buscar</button>
-      </div>
-
-    </div>
-
+  <div class="input-group mb-3">
+    <input class="form-control" [(ngModel)]="folioBusqueda">
+    <button class="btn btn-primary" (click)="buscarFolio()">Buscar</button>
   </div>
+
+  <!-- loading -->
+  <div *ngIf="buscando" class="text-primary mt-2">
+    Buscando...
+  </div>
+
+  <!-- error -->
+  <div *ngIf="errorBusqueda" class="alert alert-danger mt-2">
+    {{ errorBusqueda }}
+  </div>
+
+  <!-- resultado -->
+  <div *ngIf="reservaEncontrada" class="card mt-3 p-3">
+    <h5>Reservación encontrada</h5>
+
+    <p><b>Folio:</b> {{ reservaEncontrada.folio }}</p>
+    <p><b>Nombre:</b> {{ reservaEncontrada.nombre }}</p>
+    <p><b>Origen:</b> {{ reservaEncontrada.origen }}</p>
+    <p><b>Destino:</b> {{ reservaEncontrada.destino }}</p>
+    <p><b>Fecha:</b> {{ reservaEncontrada.fecha }}</p>
+    <p><b>Pasajeros:</b> {{ reservaEncontrada.pasajeros }}</p>
+  </div>
+
+</div>
 </section>
